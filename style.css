@@ -321,7 +321,7 @@ body.pad-active .action-container { transform: translateX(0); }
 .center-buttons {
   position: absolute;
   left: 50%;
-  bottom: 10px; 
+  bottom: -30px; 
   transform: translateX(-50%);
   display: flex;
   gap: 15px;
