@@ -103,13 +103,28 @@ function gameLoop() {
 window.onload = () => {
   preloadAssets(); 
   setupControls(); 
-  // Ganti baris mapSelect.value menjadi seperti di bawah ini:
   mapSelect.value = "Alun Alun Desa Heaven Town.jpg";
   ratioSelect.value = "640x480";
   changeMap(); 
   changeRatio(); 
   gameLoop();
   setPlayerImage(assetPaths.idle.down);
+
+  // --- LOGIKA SPLASH SCREEN ---
+  const splash = document.getElementById("splashScreen");
+  
+  splash.addEventListener("click", () => {
+    // 1. Jalankan animasi memudar
+    splash.classList.add("hidden");
+    
+    // 2. Mulai musik BGM karena browser sudah mendapat izin dari klik user
+    startBGM(); 
+    
+    // 3. Hapus splash screen dari sistem setelah 800ms (sesuai durasi CSS transition) agar tidak memberatkan RAM
+    setTimeout(() => {
+      splash.style.display = "none";
+    }, 800);
+  });
 };
 
 // Modifikasi listener agar update visuals tetap jalan saat dipicu oleh file UI

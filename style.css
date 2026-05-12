@@ -18,6 +18,51 @@ body {
   touch-action: none;
 }
 
+/* =========================================
+   SPLASH SCREEN
+   ========================================= */
+#splashScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Berada di lapisan paling atas menutupi game */
+  transition: opacity 0.8s ease;
+  cursor: pointer;
+}
+
+#splashImg {
+  max-width: 80%;
+  max-height: 60vh;
+  object-fit: contain;
+  margin-bottom: 30px;
+}
+
+#startText {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Class ini akan dipanggil JS untuk menghilangkan splash screen */
+#splashScreen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* KONTAINER GAME - Fit Layar */
 #gameContainer {
   position: relative;
