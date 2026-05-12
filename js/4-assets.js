@@ -1,47 +1,86 @@
 // 4. ASSETS + AUDIO
-// Fungsi: Menyimpan path URL dan menginisialisasi semua resource gambar dan audio.
-// Fokus ke file ini jika Anda ingin mengubah musik (BGM), Sound Effect (SFX), sprite karakter saat lari/lompat/idle, atau fungsi manajemen pemutaran suara.
+// Fungsi: Menyimpan path URL dan menginisialisasi semua resource gambar dan audio secara LOKAL.
 
-const repoRawBase = "https://raw.githubusercontent.com/Eija-01/HMVN-RPG/";
-const walkSfx = new Audio(`${repoRawBase}main/Assets/SFX/SFX%20Jalan%20Jack.mp3`);
-const runSfx = new Audio(`${repoRawBase}main/Assets/SFX/SFX%20Lari%20Jack.mp3`);
+// --- AUDIO ---
+// Asumsi folder audio (BGM & SFX) juga berada di dalam folder ASSETS
+const sfxBase = "./ASSETS/SFX/";
+const walkSfx = new Audio(`${sfxBase}SFX Jalan Jack.mp3`);
+const runSfx = new Audio(`${sfxBase}SFX Lari Jack.mp3`);
 walkSfx.loop = true; runSfx.loop = true;
 
-const bgmUrl = "https://raw.githubusercontent.com/Eija-01/HMVN-RPG/4ce92f56d3f355ec32d74065a7a8392a1e72ac80/Assets/BGM/19%20-%20Town.mp3";
+const bgmUrl = `./ASSETS/BGM/19 - Town.mp3`;
 const gameBgm = new Audio(bgmUrl);
 gameBgm.loop = true;
 gameBgm.volume = 0.4;
 
-const jumpSfx = new Audio("https://raw.githubusercontent.com/Eija-01/HMVN-RPG/1076469896ed64862830280ab084984499e3be7a/Assets/SFX/Jump-Sfx.mp3");
+const jumpSfx = new Audio(`${sfxBase}Jump-Sfx.mp3`);
 
-const charBase = `${repoRawBase}d2b8dd9a8d76bbf134f47b795b18b85d644fcf2d/Assets/Main%20Char/Jack/`;
-const runBase = `${repoRawBase}main/Assets/Main%20Char/Jack/Run/`;
-const jumpBase = `https://raw.githubusercontent.com/Eija-01/HMVN-RPG/4dd65ad685e6979b7193b523cbbaec6b2a204ba1/Assets/Main%20Char/Jack/Jump/`;
-const shadowUrl = "https://raw.githubusercontent.com/Eija-01/HMVN-RPG/064535ca75d47790273457dc5fff14d6d98686b1/Assets/Main%20Char/Char-Shadow.gif";
+// --- GAMBAR KARAKTER ---
+const charBase = `./ASSETS/CHAR/MC/JACK/`;
+const walkBase = `./ASSETS/CHAR/MC/JACK/WALK/`; // <-- Ini untuk animasi Walk
+const runBase = `./ASSETS/CHAR/MC/JACK/RUN/`;
+const jumpBase = `./ASSETS/CHAR/MC/JACK/JUMP/`;
+const idleBase = `./ASSETS/CHAR/MC/JACK/IDLE/`; 
+const shadowUrl = `./ASSETS/CHAR/Char-Shadow.gif`; // Posisi baru shadow
 
 const assetPaths = {
-  walk: { up: charBase+"Jack-Walk-Y2.gif", down: charBase+"Jack-Walk-X1.gif", left: charBase+"Jack-Walk-Y1.gif", right: charBase+"Jack-Walk-X2.gif" },
-  run: { left: runBase+"Jack-Run-Y.gif", up: runBase+"Jack-Run-Y.gif", down: runBase+"Jack-Run-X.gif", right: runBase+"Jack-Run-X.gif" },
-  idle: { up: charBase+"IdleY-2.png", down: charBase+"IdleX-1.png", left: charBase+"IdleY-1.png", right: charBase+"IdleX-2.png" },
-  jump: { x: jumpBase+"JumpX.png", y: jumpBase+"JumpY.png" }
+  walk: { 
+    left: walkBase+"Jack-Walk-Y.gif", 
+    up: walkBase+"Jack-Walk-Y.gif", 
+    down: walkBase+"Jack-Walk-X.gif", 
+    right: walkBase+"Jack-Walk-X.gif" 
+  },
+  run: { 
+    left: runBase+"Jack-Run-Y.gif", 
+    up: runBase+"Jack-Run-Y.gif", 
+    down: runBase+"Jack-Run-X.gif", 
+    right: runBase+"Jack-Run-X.gif" 
+  },
+  idle: { 
+    up: idleBase+"IdleY-2.png", 
+    down: idleBase+"IdleX-1.png", 
+    left: idleBase+"IdleY-1.png", 
+    right: idleBase+"IdleX-2.png" 
+  },
+  jump: { 
+    x: jumpBase+"JumpY.png", 
+    y: jumpBase+"JumpX.png" 
+  }
 };
 
 function preloadAssets() {
-  const urls = [...Object.values(assetPaths.walk), ...Object.values(assetPaths.run), ...Object.values(assetPaths.idle), ...Object.values(assetPaths.jump), shadowUrl];
+  const urls = [
+    ...Object.values(assetPaths.walk), 
+    ...Object.values(assetPaths.run), 
+    ...Object.values(assetPaths.idle), 
+    ...Object.values(assetPaths.jump), 
+    shadowUrl
+  ];
   urls.forEach(url => { const img = new Image(); img.src = url; });
   shadow.style.backgroundImage = `url('${shadowUrl}')`;
 }
 
 function setPlayerImage(url, mirror = false) {
-  if (currentImgUrl !== url) { player.style.backgroundImage = `url('${url}')`; currentImgUrl = url; }
+  if (currentImgUrl !== url) { 
+    player.style.backgroundImage = `url('${url}')`; 
+    currentImgUrl = url; 
+  }
   player.style.transform = `translate3d(-50%, -50%, 0) ${mirror ? 'scaleX(-1)' : 'scaleX(1)'}`;
 }
 
 function handleSfx(isMoving, isRunning) {
   if (isMoving && !isJumping) {
-    if (isRunning) { if (runSfx.paused) runSfx.play().catch(()=>{}); walkSfx.pause(); }
-    else { if (walkSfx.paused) walkSfx.play().catch(()=>{}); runSfx.pause(); }
-  } else { walkSfx.pause(); runSfx.pause(); }
+    if (isRunning) { 
+      if (runSfx.paused) runSfx.play().catch(()=>{}); 
+      walkSfx.pause(); 
+    } else { 
+      if (walkSfx.paused) walkSfx.play().catch(()=>{}); 
+      runSfx.pause(); 
+    }
+  } else { 
+    walkSfx.pause(); 
+    runSfx.pause(); 
+  }
 }
 
 function startBGM() {

@@ -115,8 +115,8 @@ body.landscape-mode #gameContainer {
 @media (min-width: 768px) and (orientation: portrait) {
   :root {
     --pad-size: 180px;
-    --btn-size: 58px;
-    --btn-offset: 61px;
+    --btn-size: 56px;
+    --btn-offset: 62px;
   }
 }
 
@@ -154,13 +154,14 @@ body.landscape-mode .mobile-ui > * {
   pointer-events: auto;
 }
 
-.floating-bar {
+.floating-bar {  /* <---Mengubah Posisi Tombol PAD/HIDE/SET (Portrait)*/
   position: fixed;
-  bottom: max(20px, env(safe-area-inset-bottom));
-  left: 50%;
+  /* UBAH POSISI DI SINI (MODE PORTRAIT) */
+  bottom: max(20px, env(safe-area-inset-bottom)); /* <--- Jarak dari bawah. Ganti 20px jadi lebih besar jika ingin lebih naik */
+  left: 50%; /* <--- Posisi di tengah secara horizontal */
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 10px; /* <--- Jarak antara tombol PAD dan SET. Perkecil jika ingin merapat */
   z-index: 5000;
   transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -171,14 +172,15 @@ body.landscape-mode .mobile-ui > * {
   }
 }
 
-body.landscape-mode .floating-bar {
+body.landscape-mode .floating-bar { /* <---Mengubah Posisi Tombol PAD/HIDE/SET (Landscape)*/
   width: 100%;
   max-width: none;
   left: 0;
-  bottom: max(180px, 20vh);
+  /* UBAH POSISI DI SINI (MODE LANDSCAPE) */
+  bottom: max(230px, 20vh); /* <--- Ketinggian tombol saat landscape */
   transform: none;
-  justify-content: space-between;
-  padding: 0 max(40px, env(safe-area-inset-left));
+  justify-content: space-between; /* <--- Membuat tombol PAD di ujung kiri, SET di ujung kanan. Ubah jadi 'center' jika ingin di tengah */
+  padding: 0 max(200px, env(safe-area-inset-left)); /* <--- Jarak dari tepi kiri dan kanan layar */
   pointer-events: none;
   box-sizing: border-box;
 }
@@ -187,13 +189,16 @@ body.landscape-mode .floating-bar button {
   pointer-events: auto;
 }
 
-#btnTogglePad, #openSettings {
-  background: rgba(40, 40, 40, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 12px;
+#btnTogglePad, #openSettings { /* <--- Mengubah Ukuran Tombol PAD/HIDE/SET */
+  
+  background: rgba(255, 255, 255, 0.3); /* <--- 0.92 Adalah Opasitas Tombol PAD/HIDE/SET */
+  backdrop-filter: blur(1px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #000000;
+  /* UBAH UKURAN DI SINI */
+  padding: 4px 8px; /* <--- Ganti misal jadi: 6px 12px; (agar lebih mungil) */
+  border-radius: 5px; /* <--- Bentuk kelengkungan sudut tombol */
+  font-size: 8px;    /* <--- Ganti misal jadi: 10px; (agar huruf lebih kecil) */
   font-weight: bold;
   cursor: pointer;
   letter-spacing: 1px;
@@ -232,7 +237,8 @@ body.landscape-mode.pad-active .shoulder-group {
 
 .sh-btn {
   width: 55px; height: 35px;
-  border: 2px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(1px);
+  border: 1px solid rgba(255,255,255,0.5);
   color: rgba(255,255,255,0.4);
   border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
@@ -284,7 +290,8 @@ body.pad-active .action-container { transform: translateX(0); }
 
 .d-btn {
   background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(1px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   color: rgba(255, 255, 255, 0.6);
   font-size: calc(var(--btn-size) * 0.5);
@@ -293,7 +300,8 @@ body.pad-active .action-container { transform: translateX(0); }
 
 .a-btn {
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(1px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   color: #fff;
   font-size: calc(var(--btn-size) * 0.4);
@@ -327,11 +335,15 @@ body.landscape-mode.pad-active .center-buttons {
   bottom: max(40px, env(safe-area-inset-bottom));
 }
 
-.sys-btn {
-  width: 48px; height: 19px;
-  background: rgba(255, 255, 255, 0.4); 
-  border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 2px; 
-  cursor: pointer; transition: background 0.1s, transform 0.1s;
+.sys-btn {  /* UI Tombol Select & Start */
+  width: 48px;
+  height: 19px;
+  backdrop-filter: blur(1px);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.1s, transform 0.1s;
 }
 .sys-btn:active { background: rgba(255, 255, 255, 0.25); transform: scale(0.92); }
 .sys-btn.start-style { clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%); }

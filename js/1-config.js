@@ -4,8 +4,8 @@
 
 const jumpScale = 0.8; 
 const baseCharSize = 130; 
-const walkSpeed = 2; 
-const runSpeed = 4; 
+const walkSpeed = 3; 
+const runSpeed = 6; 
 const FIXED_ZOOM = 1;
 const jumpDuration = 600; 
 const jumpMaxHeight = 70;

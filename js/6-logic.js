@@ -89,10 +89,10 @@ function gameLoop() {
     handleSfx(true, isAPressed);
     
     switch(moveDir) {
-      case "up": worldX += mX; worldY -= mY; lastDirection = "up"; if(!isJumping) setPlayerImage(isAPressed ? assetPaths.run.up : assetPaths.walk.up, isAPressed); break;
+      case "up": worldX += mX; worldY -= mY; lastDirection = "up"; if(!isJumping) setPlayerImage(isAPressed ? assetPaths.run.up : assetPaths.walk.up, true); break;
       case "down": worldX -= mX; worldY += mY; lastDirection = "down"; if(!isJumping) setPlayerImage(isAPressed ? assetPaths.run.down : assetPaths.walk.down, false); break;
       case "left": worldX -= mX; worldY -= mY; lastDirection = "left"; if(!isJumping) setPlayerImage(isAPressed ? assetPaths.run.left : assetPaths.walk.left, false); break;
-      case "right": worldX += mX; worldY += mY; lastDirection = "right"; if(!isJumping) setPlayerImage(isAPressed ? assetPaths.run.right : assetPaths.walk.right, isAPressed); break;
+      case "right": worldX += mX; worldY += mY; lastDirection = "right"; if(!isJumping) setPlayerImage(isAPressed ? assetPaths.run.right : assetPaths.walk.right, true); break;
     }
   }
   updateVisuals();
@@ -103,7 +103,8 @@ function gameLoop() {
 window.onload = () => {
   preloadAssets(); 
   setupControls(); 
-  mapSelect.value = "Alun%20Alun%20Desa%20Heaven%20Town.jpg|bffe9fb95659c2c10e1ce284b6b4bc1b3677116e";
+  // Ganti baris mapSelect.value menjadi seperti di bawah ini:
+  mapSelect.value = "Alun Alun Desa Heaven Town.jpg";
   ratioSelect.value = "640x480";
   changeMap(); 
   changeRatio(); 

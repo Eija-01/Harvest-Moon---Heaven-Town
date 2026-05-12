@@ -29,7 +29,7 @@ document.addEventListener("keydown", (e) => {
   const k = e.key.toLowerCase();
   if (["arrowup","arrowdown","arrowleft","arrowright"].includes(k)) activeKey = k;
   if (k === "x" || k === "shift") isAPressed = true;
-  if (k === "r") performJump(); 
+  if (k === "c") performJump(); 
   startBGM();
 });
 

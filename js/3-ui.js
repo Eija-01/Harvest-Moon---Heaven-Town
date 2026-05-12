@@ -7,24 +7,31 @@ const gameArea = document.getElementById("gameArea");
 const player = document.getElementById("player");
 const shadow = document.getElementById("shadow");
 const ratioSelect = document.getElementById("ratioSelect");
-const orientSelect = document.getElementById("orientSelect");
 const mapSelect = document.getElementById("mapSelect");
 const sideMenu = document.getElementById("settingsOverlay");
 const openBtn = document.getElementById("openSettings");
 const togglePadBtn = document.getElementById("btnTogglePad");
 const btnMute = document.getElementById("btnMute");
 
-function changeOrientation() {
-  const mode = orientSelect.value;
-  if (mode === "landscape") {
+// --- AUTO ROTATE DETECTOR ---
+function handleAutoRotate() {
+  // window.matchMedia membaca sensor fisik / ukuran asli layar saat ini
+  if (window.matchMedia("(orientation: landscape)").matches) {
     document.body.classList.add("landscape-mode");
   } else {
     document.body.classList.remove("landscape-mode");
   }
-  setTimeout(changeRatio, 100);
+  // Panggil changeRatio() untuk merapikan UI dan rasio canvas game
+  setTimeout(changeRatio, 100); 
 }
 
-orientSelect.addEventListener("change", changeOrientation);
+// Pasang "telinga" agar JS bereaksi setiap kali layar di-resize atau hape diputar
+window.addEventListener("resize", handleAutoRotate);
+window.addEventListener("orientationchange", handleAutoRotate);
+
+// Panggil fungsi sekali di awal agar game langsung menyesuaikan posisi saat baru pertama kali dibuka
+handleAutoRotate();
+// ----------------------------
 
 togglePadBtn.onclick = (e) => {
   e.stopPropagation();
@@ -76,14 +83,16 @@ function changeRatio() {
 ratioSelect.addEventListener("change", changeRatio);
 
 function changeMap() {
-  const data = mapSelect.value.split('|');
-  const url = `${repoRawBase}${data[1]}/Assets/Maps/${data[0]}`;
+  // Langsung ambil nama file dari value HTML
+  const mapName = mapSelect.value;
+  // Arahkan ke folder lokal
+  const url = `./ASSETS/MAPS/${mapName}`;
+  
   const img = new Image();
   img.onload = () => {
     currentNaturalWidth = img.naturalWidth; 
     currentNaturalHeight = img.naturalHeight;
     gameArea.style.backgroundImage = `url('${url}')`; 
-    // updateVisuals() -> Dipanggil di logic.js
   };
   img.src = url;
 }

@@ -1,104 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>HMVN RPG</title>  
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="orientation-portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>HMVN RPG</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="orientation-portrait">
+    <div id="preloader"></div>
 
-<div id="preloader"></div>
-
-<div id="gameContainer">
-  <div id="gameArea"></div>
-  <div id="shadow"></div>
-  <div id="player"></div>
-</div>
-
-<!-- TOMBOL AKTIVASI -->
-<div class="floating-bar">
-  <button id="btnTogglePad">🎮 PAD</button>
-  <button id="openSettings">SET</button>
-</div>
-
-<div class="mobile-ui">
-  <div class="shoulder-group">
-    <div style="display:flex; gap:10px">
-      <div class="sh-btn">L2</div>
-      <div class="sh-btn" id="touchL1">L1</div>
-    </div>
-    <div style="width:100px"></div> 
-    <div style="display:flex; gap:10px">
-      <div class="sh-btn">R1</div>
-      <div class="sh-btn">R2</div>
-    </div>
-  </div>
-
-  <div class="controls-main">
-    <div class="dpad-container">
-      <div class="d-btn d-up" id="touchUp">▲</div>
-      <div class="d-btn d-left" id="touchLeft">◀</div>
-      <div class="d-btn d-right" id="touchRight">▶</div>
-      <div class="d-btn d-down" id="touchDown">▼</div>
+    <div id="gameContainer">
+      <div id="gameArea"></div>
+      <div id="shadow"></div>
+      <div id="player"></div>
     </div>
 
-    <div class="center-buttons">
-      <div><div class="sys-btn" id="touchSelect"></div><div class="sys-label">Select</div></div>
-      <div><div class="sys-btn start-style" id="touchStart"></div><div class="sys-label">Start</div></div>
+    <!-- TOMBOL AKTIVASI -->
+    <div class="floating-bar">
+      <button id="btnTogglePad">🎮PAD</button>
+      <button id="openSettings">⚙️SET</button>
     </div>
 
-    <div class="action-container">
-      <div class="a-btn btn-x">X</div>
-      <div class="a-btn btn-y">Y</div>
-      <div class="a-btn btn-b">B</div>
-      <div class="a-btn btn-a" id="touchA">A</div>
+    <div class="mobile-ui">
+      <div class="shoulder-group">
+        <div style="display: flex; gap: 10px">
+          <div class="sh-btn">L2</div>
+          <div class="sh-btn" id="touchL1">L1</div>
+        </div>
+        <div style="width: 100px"></div>
+        <div style="display: flex; gap: 10px">
+          <div class="sh-btn">R1</div>
+          <div class="sh-btn">R2</div>
+        </div>
+      </div>
+
+      <div class="controls-main">
+        <div class="dpad-container">
+          <div class="d-btn d-up" id="touchUp">▲</div>
+          <div class="d-btn d-left" id="touchLeft">◀</div>
+          <div class="d-btn d-right" id="touchRight">▶</div>
+          <div class="d-btn d-down" id="touchDown">▼</div>
+        </div>
+
+        <div class="center-buttons">
+          <div>
+            <div class="sys-btn" id="touchSelect"></div>
+            <div class="sys-label">Select</div>
+          </div>
+          <div>
+            <div class="sys-btn start-style" id="touchStart"></div>
+            <div class="sys-label">Start</div>
+          </div>
+        </div>
+
+        <div class="action-container">
+          <div class="a-btn btn-x">X</div>
+          <div class="a-btn btn-y">Y</div>
+          <div class="a-btn btn-b">B</div>
+          <div class="a-btn btn-a" id="touchA">A</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div id="settingsOverlay">
-  <div style="text-align:center; color:#0f8; font-weight:bold; font-size:14px; margin-bottom:10px">PENGATURAN</div>
-  
-  <div class="setting-group orientation-setting">
-    <label>Orientasi Layar</label>
-    <select id="orientSelect">
-      <option value="portrait" selected>Portrait</option>
-      <option value="landscape">Landscape</option>
-    </select>
-  </div>
+    <div id="settingsOverlay">
+      <div
+        style="
+          text-align: center;
+          color: #0f8;
+          font-weight: bold;
+          font-size: 14px;
+          margin-bottom: 10px;
+        "
+      >
+        PENGATURAN
+      </div>
+     
+      <div class="setting-group">
+        <label>Rasio Layar</label>
+        <select id="ratioSelect">
+          <option value="full">Layar Penuh</option>
+          <option value="1280x720">HD (1280x720)</option>
+          <option value="640x480" selected>Retro (640x480)</option>
+        </select>
+      </div>
+      <div class="setting-group">
+        <label>Lokasi Dunia</label>
+        <select id="mapSelect">
+          <option value="Area Pohon Gunung.jpg">Area Pohon Gunung</option>
+          <option value="Halaman Rumah Jack.png">Halaman Rumah Jack</option>
+          <option value="Dermaga.png">Dermaga</option>
+          <option value="Bogeng City.jpg">Bogeng City</option>
+          <option value="Alun Alun Desa Heaven Town.jpg" selected>
+            Alun Alun Desa
+          </option>
+          <option value="Kamar Jack.JPG">Kamar Jack</option>
+          <option value="Laut Full Siang.jpg">Laut Full Siang</option>
+          <option value="Laut Malam.jpg">Laut Malam</option>
+          <option value="Mother Lake Beku.jpg">Mother Lake Beku</option>
+          <option value="Toko Kai.jpg">Toko Kai</option>
+        </select>
+      </div>
+      <div class="setting-group">
+        <label>Audio</label>
+        <button id="btnMute" class="menu-btn">🔊 MUSIK: ON</button>
+      </div>
+    </div>
 
-  <div class="setting-group">
-    <label>Rasio Layar</label>
-    <select id="ratioSelect">
-      <option value="full">Layar Penuh</option>
-      <option value="1280x720">HD (1280x720)</option>
-      <option value="640x480" selected>Retro (640x480)</option>
-    </select>
-  </div>
-  <div class="setting-group">
-    <label>Lokasi Dunia</label>
-    <select id="mapSelect">
-      <option value="Area%20Pohon%20Gunung.jpg|3e906e09b8c0e621227f0314491a74122d56d786">Area Pohon Gunung</option>
-      <option value="Halaman%20Rumah%20Jack.png|3e906e09b8c0e621227f0314491a74122d56d786">Halaman Rumah Jack</option>
-      <option value="Dermaga.png|3e906e09b8c0e621227f0314491a74122d56d786">Dermaga</option>
-      <option value="Bogeng%20City.jpg|3e906e09b8c0e621227f0314491a74122d56d786">Bogeng City</option>
-      <option value="Alun%20Alun%20Desa%20Heaven%20Town.jpg|bffe9fb95659c2c10e1ce284b6b4bc1b3677116e" selected>Alun Alun Desa</option>
-    </select>
-  </div>
-  <div class="setting-group">
-    <label>Audio</label>
-    <button id="btnMute" class="menu-btn">🔊 MUSIK: ON</button>
-  </div>
-</div>
-
-<!-- URUTAN SCRIPT SANGAT PENTING -->
-<script src="js/1-config.js"></script>
-<script src="js/2-state.js"></script>
-<script src="js/3-ui.js"></script>
-<script src="js/4-assets.js"></script>
-<script src="js/5-input.js"></script>
-<script src="js/6-logic.js"></script>
-
-</body>
+    <!-- URUTAN SCRIPT SANGAT PENTING -->
+    <script src="js/1-config.js"></script>
+    <script src="js/2-state.js"></script>
+    <script src="js/3-ui.js"></script>
+    <script src="js/4-assets.js"></script>
+    <script src="js/5-input.js"></script>
+    <script src="js/6-logic.js"></script>
+  </body>
 </html>
