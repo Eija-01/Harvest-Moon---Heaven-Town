@@ -321,7 +321,7 @@ body.pad-active .action-container { transform: translateX(0); }
 .center-buttons {
   position: absolute;
   left: 50%;
-  bottom: 0px; 
+  bottom: 40px; 
   transform: translateX(-50%);
   display: flex;
   gap: 15px;
@@ -337,7 +337,7 @@ body.landscape-mode.pad-active .center-buttons {
 
 .sys-btn {  /* UI Tombol Select & Start */
   width: 48px;
-  height: 19px;
+  height: 20px;
   backdrop-filter: blur(1px);
   background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -347,7 +347,7 @@ body.landscape-mode.pad-active .center-buttons {
 }
 .sys-btn:active { background: rgba(255, 255, 255, 0.25); transform: scale(0.92); }
 .sys-btn.start-style { clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%); }
-.sys-label { font-size: 10px; color: #666; text-align: center; margin-top: 4px; font-weight: bold; text-transform: uppercase; }
+.sys-label { font-size: 11px; color: #666; text-align: center; margin-top: 2px; font-weight: bold; text-transform: uppercase; }
 
 /* =========================================
    PENGATURAN OVERLAY (SETTINGS)
