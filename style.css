@@ -29,11 +29,20 @@ body {
   height: 100vh; 
   max-width: 100vw;
   flex-shrink: 0;
-  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* UBAH BARIS TRANSITION & TAMBAHKAN OPACITY 0 */
+  transition: opacity 0.4s ease, height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0; /* Sembunyikan kontainer game di detik pertama */
+  
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 5;
+}
+
+/* TAMBAHKAN CLASS BARU INI TEPAT DI BAWAHNYA */
+#gameContainer.ready {
+  opacity: 1; /* Akan memunculkan map & karakter secara bersamaan */
 }
 
 body.pad-active:not(.landscape-mode) #gameContainer {

@@ -83,17 +83,23 @@ function changeRatio() {
 ratioSelect.addEventListener("change", changeRatio);
 
 function changeMap() {
-  // Langsung ambil nama file dari value HTML
-  const mapName = mapSelect.value;
-  // Arahkan ke folder lokal
-  const url = `./ASSETS/MAPS/${mapName}`;
+  // 1. Tarik transisi (kembalikan ke layar hitam) saat mengganti map
+  gameContainer.classList.remove("ready");
   
+  const mapName = mapSelect.value;
+  // Pastikan path folder ASSETS/MAPS sesuai dengan folder lokal Anda
+  const url = `./ASSETS/MAPS/${mapName}`; 
   const img = new Image();
+  
   img.onload = () => {
     currentNaturalWidth = img.naturalWidth; 
     currentNaturalHeight = img.naturalHeight;
     gameArea.style.backgroundImage = `url('${url}')`; 
+    
+    // 2. Munculkan area game + karakter berbarengan setelah gambar map 100% siap
+    gameContainer.classList.add("ready");
   };
+  
   img.src = url;
 }
 mapSelect.addEventListener("change", changeMap);
