@@ -110,23 +110,38 @@ window.onload = () => {
   gameLoop();
   setPlayerImage(assetPaths.idle.down);
 
+
   // --- LOGIKA SPLASH SCREEN ---
   const splash = document.getElementById("splashScreen");
+  let isGameStarted = false; // Mencegah spasi tertekan 2 kali
   
-  splash.addEventListener("click", () => {
-    // 1. Jalankan animasi memudar
+  function startGame() {
+    if (isGameStarted) return;
+    isGameStarted = true;
+
+    // 1. Bunyikan SFX Select
+    startSfx.currentTime = 0;
+    startSfx.play().catch(()=>{});
+
+    // 2. Jalankan animasi memudar
     splash.classList.add("hidden");
     
-    // 2. Mulai musik BGM karena browser sudah mendapat izin dari klik user
+    // 3. Mulai musik BGM
     startBGM(); 
     
-    // 3. Hapus splash screen dari sistem setelah 800ms (sesuai durasi CSS transition) agar tidak memberatkan RAM
+    // 4. Hapus splash screen dari sistem
     setTimeout(() => {
       splash.style.display = "none";
     }, 800);
+  }
+
+  // Hilang saat diklik/tap
+  splash.addEventListener("click", startGame);
+
+  // Hilang saat ditekan tombol Spasi
+  window.addEventListener("keydown", (e) => {
+    if (e.key === " " || e.key === "Spacebar") {
+      startGame();
+    }
   });
 };
-
-// Modifikasi listener agar update visuals tetap jalan saat dipicu oleh file UI
-ratioSelect.addEventListener("change", () => setTimeout(updateVisuals, 100));
-mapSelect.addEventListener("change", () => setTimeout(updateVisuals, 100));

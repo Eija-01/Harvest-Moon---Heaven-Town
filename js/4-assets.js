@@ -15,6 +15,9 @@ gameBgm.volume = 0.4;
 
 const jumpSfx = new Audio(`${sfxBase}Jump-Sfx.mp3`);
 
+const startSfx = new Audio(`${sfxBase}Select.mp3`);
+
+
 // --- GAMBAR KARAKTER ---
 const charBase = `./ASSETS/CHAR/MC/JACK/`;
 const walkBase = `./ASSETS/CHAR/MC/JACK/WALK/`; // <-- Ini untuk animasi Walk

@@ -1,3 +1,11 @@
+/* =========================================
+   CUSTOM FONT
+   ========================================= */
+@font-face {
+  font-family: 'HMBTN';
+  src: url('./ASSETS/FONT/HMBTN.ttf') format('truetype');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +16,7 @@
 
 body {
   overflow: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'HMBTN', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #000;
   display: flex;
   flex-direction: column;
@@ -450,6 +458,9 @@ body.landscape-mode #settingsOverlay.active {
 
 @media (min-width: 1025px) {
   .orientation-setting { display: none !important; }
+  .pc-text { 
+  display: none; 
+}
 }
 
 #settingsOverlay.active {
@@ -523,4 +534,18 @@ select, .menu-btn {
     justify-content: center; /* Pusatkan tombol SET */
     pointer-events: auto;
   }
+
+/* SPLASH SCREEN KHUSUS PC / DESKTOP */
+@media (min-width: 1025px) {
+  /* ... kode sembunyikan UI sebelumnya biarkan ... */
+
+  /* Ganti teks splash screen */
+  .mobile-text {
+    display: none;
+  }
+  .pc-text {
+    display: inline;
+  }
+}
+  
 }
