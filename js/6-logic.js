@@ -113,7 +113,9 @@ window.onload = () => {
 
   // --- LOGIKA SPLASH SCREEN ---
   const splash = document.getElementById("splashScreen");
-  let isGameStarted = false; // Mencegah spasi tertekan 2 kali
+  const splashImg = document.getElementById("splashImg");
+  const startText = document.getElementById("startText");
+  let isGameStarted = false; 
   
   function startGame() {
     if (isGameStarted) return;
@@ -123,16 +125,25 @@ window.onload = () => {
     startSfx.currentTime = 0;
     startSfx.play().catch(()=>{});
 
-    // 2. Jalankan animasi memudar
-    splash.classList.add("hidden");
-    
-    // 3. Mulai musik BGM
-    startBGM(); 
-    
-    // 4. Hapus splash screen dari sistem
+    // 2. Ubah layar menjadi hitam & pudarkan isi Splash Screen
+    splash.style.backgroundColor = "#000"; // Ubah latar jadi hitam
+    splashImg.style.opacity = "0";         // Hilangkan gambar
+    startText.style.opacity = "0";         // Hilangkan teks
+
+    // 3. Tahan di layar hitam selama 2 Detik (2000ms), lalu masuk ke game
     setTimeout(() => {
-      splash.style.display = "none";
-    }, 800);
+      // Mulai musik BGM
+      startBGM(); 
+      
+      // Jalankan animasi memudar pada layar hitam untuk membuka game
+      splash.classList.add("hidden");
+      
+      // Hapus splash screen dari sistem setelah selesai memudar (800ms kemudian)
+      setTimeout(() => {
+        splash.style.display = "none";
+      }, 800);
+      
+    }, 2000); // <-- Waktu tunggu 2 detik layar hitam
   }
 
   // Hilang saat diklik/tap
