@@ -452,7 +452,6 @@ select, .menu-btn {
     bottom: auto;       /* Membatalkan perintah posisi 'bottom' dari settingan Mobile */
     left: 20px;         /* Jarak dari pinggir kiri layar */
     transform: none;    /* Membatalkan perintah agar letaknya tidak lagi di tengah layar */
-    width: auto;        /* Biarkan lebarnya menyesuaikan isi (hanya tombol SET) */
-    pointer-events: auto;
+        pointer-events: auto;
   }
 }
