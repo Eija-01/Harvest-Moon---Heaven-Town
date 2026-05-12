@@ -59,15 +59,16 @@ body {
 }
 
 #startText {
-  position: relative;
+  position: absolute; /* Mengubah posisi menjadi absolut agar terlepas dari tengah layar */
+  bottom: 20px;       /* Menarik teks ke bawah dengan jarak 20px dari dasar container */
+  width: 100%;        /* Memastikan teks tetap berada persis di tengah secara horizontal */
   z-index: 2;
-  color: #000;
+  color: #000;        /* Memastikan warna teks hitam */
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 2px;
   text-align: center;
   animation: blink 1.5s infinite;
-  /* Tambahkan transisi untuk teks saat memudar */
   transition: opacity 0.5s ease;
 }
 
