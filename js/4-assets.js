@@ -49,6 +49,8 @@ const assetPaths = {
 };
 
 function preloadAssets() {
+  const preloaderDiv = document.getElementById("preloader");
+  
   const urls = [
     ...Object.values(assetPaths.walk), 
     ...Object.values(assetPaths.run), 
@@ -56,7 +58,15 @@ function preloadAssets() {
     ...Object.values(assetPaths.jump), 
     shadowUrl
   ];
-  urls.forEach(url => { const img = new Image(); img.src = url; });
+  
+  urls.forEach(url => { 
+    // Buat elemen <img> asli
+    const img = document.createElement("img"); 
+    img.src = url; 
+    // Masukkan ke dalam HTML agar browser melakukan "Hard Render"
+    preloaderDiv.appendChild(img); 
+  });
+  
   shadow.style.backgroundImage = `url('${shadowUrl}')`;
 }
 

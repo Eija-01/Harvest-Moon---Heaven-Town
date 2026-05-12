@@ -430,7 +430,19 @@ select, .menu-btn {
 
 .menu-btn:active { background: #0f8; color: #000; }
 
-#preloader { position: absolute; width: 0; height: 0; visibility: hidden; }
+#preloader { 
+  position: absolute; 
+  width: 1px; 
+  height: 1px; 
+  overflow: hidden; 
+  opacity: 0.01; /* Dibuat hampir transparan, jangan visibility: hidden */
+  pointer-events: none; 
+  z-index: -1; 
+}
+#preloader img {
+  width: 1px;
+  height: 1px;
+}
 
 /* =========================================
    TAMPILAN KHUSUS PC / DESKTOP (Layar Lebar)
