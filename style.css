@@ -30,26 +30,26 @@ body {
    SPLASH SCREEN
    ========================================= */
 #splashScreen {
-  position: fixed;
+  position: absolute; /* <-- Berubah dari 'fixed' menjadi 'absolute' agar ikut wadah */
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;  /* <-- Berubah menjadi persentase wadah */
+  height: 100%; /* <-- Berubah menjadi persentase wadah */
   background-color: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Berada di lapisan paling atas menutupi game */
+  z-index: 9999; /* Memastikan dia menutupi map dan karakter (z-index karakter cuma 10) */
   transition: opacity 0.8s ease;
   cursor: pointer;
 }
 
 #splashImg {
   max-width: 80%;
-  max-height: 60vh;
+  max-height: 70%; /* <-- Berubah dari vh menjadi persentase agar tidak menabrak batas atas/bawah */
   object-fit: contain;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 #startText {
