@@ -510,6 +510,41 @@ body.landscape-mode #settingsOverlay.active {
   transform: translate(-50%, -50%) scale(1);
 }
 
+
+/* =========================================
+   TOMBOL FULLSCREEN (POJOK KANAN ATAS)
+   ========================================= */
+#btnFullscreen {
+  position: fixed; /* Menempel di layar kaca, bukan di dalam game */
+  /* HARAM OUT OF SCREEN: max() memastikan jarak aman dari pinggiran dan poni HP */
+  top: max(15px, env(safe-area-inset-top)); 
+  right: max(15px, env(safe-area-inset-right)); 
+  
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  display: none; /* Sembunyikan secara default (muncul hanya saat landscape) */
+  justify-content: center;
+  align-items: center;
+  z-index: 999999; /* Selalu di atas */
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+#btnFullscreen:active {
+  background: rgba(200, 200, 200, 0.8);
+}
+
+/* HANYA MUNCUL SAAT HP DIMIRINGKAN (LANDSCAPE) */
+@media (orientation: landscape) {
+  #btnFullscreen {
+    display: flex;
+  }
+}
+
+
 @media (min-width: 1025px) {
   .orientation-setting { display: none !important; }
   .pc-text { 
@@ -576,6 +611,7 @@ select, .menu-btn {
   #btnTogglePad {
     display: none !important;
   }
+  #btnFullscreen { display: none !important; }
 
   /* 3. Pindahkan lokasi tombol "SET" ke pojok kiri atas */
   .floating-bar {

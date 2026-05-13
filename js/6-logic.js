@@ -162,4 +162,30 @@ window.onload = () => {
       startGame();
     }
   });
+
+
+  // --- LOGIKA TOMBOL FULLSCREEN KELUAR/MASUK ---
+  const btnFullscreen = document.getElementById("btnFullscreen");
+  
+  btnFullscreen.addEventListener("click", () => {
+    // Cek apakah layar sedang TIDAK fullscreen
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      // Masuk Fullscreen
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(err => console.log(err));
+      } else if (elem.webkitRequestFullscreen) { 
+        elem.webkitRequestFullscreen();
+      }
+    } else {
+      // Keluar Fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  });
+  
+
 };

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="orientation-portrait">
-    
     <div id="preloader"></div>
 
     <div id="gameContainer">
@@ -19,13 +18,17 @@
       <div id="player"></div>
 
       <!-- SPLASH SCREEN -->
-<div id="splashScreen">
-  <img src="./ASSETS/Splash-Screen.png" alt="Splash Screen" id="splashImg">
-  <div id="startText">
-    <span class="mobile-text">TAP TO START</span>
-    <span class="pc-text">PRESS SPACE TO START</span>
-  </div>
-</div>
+      <div id="splashScreen">
+        <img
+          src="./ASSETS/Splash-Screen.png"
+          alt="Splash Screen"
+          id="splashImg"
+        />
+        <div id="startText">
+          <span class="mobile-text">TAP TO START</span>
+          <span class="pc-text">PRESS SPACE TO START</span>
+        </div>
+      </div>
     </div>
 
     <!-- TOMBOL AKTIVASI -->
@@ -87,7 +90,7 @@
       >
         PENGATURAN
       </div>
-     
+
       <div class="setting-group">
         <label>Rasio Layar</label>
         <select id="ratioSelect">
@@ -126,5 +129,25 @@
     <script src="js/4-assets.js"></script>
     <script src="js/5-input.js"></script>
     <script src="js/6-logic.js"></script>
+
+    <!-- TOMBOL FULLSCREEN -->
+    <button id="btnFullscreen" class="fullscreen-btn">
+      <!-- Ini adalah kode gambar icon panah 4 arah seperti milik Anda -->
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        stroke="black"
+        stroke-width="2.5"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
+        ></path>
+      </svg>
+    </button>
+    
   </body>
 </html>
