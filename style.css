@@ -344,22 +344,34 @@ body.pad-active .shoulder-group { opacity: 1; pointer-events: auto; }
 
 body.landscape-mode.pad-active .shoulder-group {
   position: absolute;
-  top: max(20px, env(safe-area-inset-top));
+  /* PINDAH KE BAWAH: Di atas D-Pad dan Action Buttons */
+  bottom: calc(var(--pad-size) + max(50px, env(safe-area-inset-bottom))); 
+  top: auto; /* Membatalkan posisi top sebelumnya */
   left: 0;
   width: 100%;
   padding-left: max(40px, env(safe-area-inset-left));
   padding-right: max(40px, env(safe-area-inset-right));
+  z-index: 1001; /* Pastikan di atas kontroler utama */
 }
 
 .sh-btn {
-  width: 55px; height: 35px;
+  width: 55px; 
+  height: 35px;
   backdrop-filter: blur(1px);
+  background: rgba(255, 255, 255, 0.15); /* Sedikit lebih terang agar kelihatan */
   border: 1px solid rgba(255,255,255,0.5);
-  color: rgba(255,255,255,0.4);
+  color: #fff; /* Warna teks putih agar kontras */
   border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: bold; font-size: 14px; cursor: pointer; transition: all 0.1s;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-weight: bold; 
+  font-size: 14px; 
+  cursor: pointer; 
+  transition: all 0.1s;
+  gap: 5px; /* Jarak jika tombol L1 dan L2 berada dalam satu kontainer */
 }
+
 .sh-btn:active { background: rgba(255,255,255,0.1); transform: scale(0.95); }
 
 .controls-main {
