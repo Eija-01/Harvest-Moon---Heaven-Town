@@ -340,25 +340,18 @@ body.landscape-mode .floating-bar button {
   box-sizing: border-box;
 }
 
-/* Saat PAD aktif, munculkan kembali */
-body.pad-active .shoulder-group { 
-  opacity: 1; 
-  visibility: visible;
-  pointer-events: auto;
+body.pad-active .shoulder-group { opacity: 1; pointer-events: auto; }
 
 body.landscape-mode.pad-active .shoulder-group {
   position: absolute;
-  /* Kunci posisi di atas kontroler */
-  bottom: calc(var(--pad-size) + max(50px, env(safe-area-inset-bottom))); 
-  top: auto; 
+/* Kunci posisi di atas kontroler */
+  bottom: calc(var(--pad-size) + max(50px, env(safe-area-inset-bottom)));
+  top: auto; /* Membatalkan posisi top sebelumnya */
   left: 0;
   width: 100%;
   padding-left: max(40px, env(safe-area-inset-left));
   padding-right: max(40px, env(safe-area-inset-right));
-  z-index: 1001;
-  
-  /* Pastikan tidak ada transisi pada properti 'bottom' agar tidak bergeser saat hilang */
-  transition: opacity 0.4s ease, visibility 0.4s ease; 
+  z-index: 1001; /* Pastikan di atas kontroler utama */
 }
 
 .sh-btn {
