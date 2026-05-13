@@ -117,8 +117,14 @@ window.onload = () => {
   const startText = document.getElementById("startText");
   let isGameStarted = false; 
   
-  function startGame() {
+  function startGame(e) {
     if (isGameStarted) return;
+
+    // CEGATAN BARU: Jika yang diklik adalah tombol Fullscreen atau gambar di dalamnya, BATALKAN!
+    if (e && (e.target.id === "btnFullscreen" || e.target.closest("#btnFullscreen"))) {
+      return; 
+    }
+
     isGameStarted = true;
 
     // --- Memicu Mode Layar Penuh (Fullscreen) ---
