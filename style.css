@@ -95,9 +95,16 @@ body {
   animation: blink 1.5s infinite;
 }
 
-#startText .mobile-text,
+/* Pengaturan teks khusus HP (TAP TO START) */
+#startText .mobile-text {
+  color: #000000 !important;
+  font-size: 14px; /* <--- Ubah angka ini (Makin kecil angkanya, makin kecil hurufnya) */
+}
+
+/* Pengaturan teks khusus PC (PRESS SPACE TO START) */
 #startText .pc-text {
-  color: #000000 !important; /* Memaksa teks menjadi warna hitam murni */
+  color: #000000 !important;
+  font-size: 26px; /* <--- Ubah angka ini (Makin besar angkanya, makin besar hurufnya) */
 }
 
 @keyframes blink {
