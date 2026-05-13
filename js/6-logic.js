@@ -146,7 +146,7 @@ window.onload = () => {
 
   // Hilang saat diklik/tap
   window.addEventListener("click", startGame);
-  window.addEventListener("touchstart", startGame, { passive: false });
+  window.addEventListener("touchend", startGame);
 
   // Hilang saat ditekan tombol Spasi
   window.addEventListener("keydown", (e) => {

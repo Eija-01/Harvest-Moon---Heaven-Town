@@ -63,7 +63,7 @@ body {
 
 #startText {
   position: absolute; 
-  top: 95%; /* Menggunakan persentase (85% dari atas layar) agar tidak pernah terdorong keluar batas bawah */
+  top: 70%; /* Menggunakan persentase (85% dari atas layar) agar tidak pernah terdorong keluar batas bawah */
   left: 50%;
   transform: translate(-50%, -50%); /* Memastikan posisi horizontal tepat di tengah */
   
