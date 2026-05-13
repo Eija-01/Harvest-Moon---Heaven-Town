@@ -120,38 +120,15 @@ window.onload = () => {
   function startGame(e) {
     if (isGameStarted) return;
 
-// PENGUNCIAN KETAT: Cek apakah yang diklik benar-benar tombol Start
-    // Pastikan ID 'btnStart' sesuai dengan yang ada di index.html kamu
-    const isStartButtonClicked = e && (e.target.id === "btnStart" || e.target.closest("#btnStart"));
-    
-    // Jika bukan tombol Start yang diklik, maka abaikan (diam saja)
-    if (!isStartButtonClicked) {
-      return;
+// DAFTAR PENGECUALIAN: Jangan mulai game jika yang diklik adalah elemen-elemen ini
+    if (e && (
+      e.target.id === "btnFullscreen" || e.target.closest("#btnFullscreen") ||
+      e.target.id === "btnTogglePad" || e.target.closest("#btnTogglePad") ||
+      e.target.id === "btnSet" || e.target.closest("#btnSet") ||
+      e.target.classList.contains("floating-bar") || e.target.closest(".floating-bar")
+    )) {
+      return; 
     }
-
-    isGameStarted = true;
-
-    // 1. Bunyikan SFX Select
-    startSfx.currentTime = 0;
-    startSfx.play().catch(()=>{});
-
-    // 2. Efek Visual Splash Screen
-    splash.style.backgroundColor = "#000"; 
-    splashImg.style.opacity = "0";         
-    startText.style.animation = "none"; 
-    startText.style.opacity = "0";         
-
-    // 3. Jeda 2 detik sebelum masuk game & putar musik
-    setTimeout(() => {
-      startBGM(); 
-      splash.classList.add("hidden");
-      
-      setTimeout(() => {
-        splash.style.display = "none";
-      }, 800);
-      
-    }, 2000); 
-  }
 
     isGameStarted = true;
 
