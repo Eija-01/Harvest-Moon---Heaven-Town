@@ -145,7 +145,8 @@ window.onload = () => {
   }
 
   // Hilang saat diklik/tap
-  splash.addEventListener("click", startGame);
+  window.addEventListener("click", startGame);
+  window.addEventListener("touchstart", startGame, { passive: false });
 
   // Hilang saat ditekan tombol Spasi
   window.addEventListener("keydown", (e) => {
