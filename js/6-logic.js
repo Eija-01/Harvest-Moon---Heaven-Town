@@ -127,14 +127,6 @@ window.onload = () => {
 
     isGameStarted = true;
 
-    // --- Memicu Mode Layar Penuh (Fullscreen) ---
-    const elem = document.documentElement; // Mengambil seluruh halaman HTML
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen().catch((err) => console.log(err)); // Standar modern
-    } else if (elem.webkitRequestFullscreen) { 
-      elem.webkitRequestFullscreen(); // Standar untuk Safari / iOS
-    }
-
     // 1. Bunyikan SFX Select
     startSfx.currentTime = 0;
     startSfx.play().catch(()=>{});
