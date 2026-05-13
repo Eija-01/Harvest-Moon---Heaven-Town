@@ -463,7 +463,7 @@ body.landscape-mode.pad-active .center-buttons {
 }
 .sys-btn:active { background: rgba(255, 255, 255, 0.25); transform: scale(0.92); }
 .sys-btn.start-style { clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%); }
-.sys-label { font-size: 11px; color: #666; text-align: center; margin-top: 2px; font-weight: bold; text-transform: uppercase; }
+.sys-label { font-size: 11px; color: #666; text-align: center; margin-top: 5px; font-weight: bold; text-transform: uppercase; }
 
 /* =========================================
    PENGATURAN OVERLAY (SETTINGS)
@@ -515,33 +515,27 @@ body.landscape-mode #settingsOverlay.active {
    TOMBOL FULLSCREEN (POJOK KANAN ATAS)
    ========================================= */
 #btnFullscreen {
-  position: fixed; /* Menempel di layar kaca, bukan di dalam game */
-  /* HARAM OUT OF SCREEN: max() memastikan jarak aman dari pinggiran dan poni HP */
+  position: fixed; 
   top: max(15px, env(safe-area-inset-top)); 
   right: max(15px, env(safe-area-inset-right)); 
-  
   width: 45px;
   height: 45px;
   background: rgba(255, 255, 255, 0.6);
   border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 8px;
-  display: none; /* Sembunyikan secara default (muncul hanya saat landscape) */
+  display: flex; /* <-- UBAH DI SINI: Ganti 'none' menjadi 'flex' agar selalu muncul */
   justify-content: center;
   align-items: center;
-  z-index: 999999; /* Selalu di atas */
+  z-index: 999999; 
   cursor: pointer;
   backdrop-filter: blur(4px);
+  transition: background 0.2s ease; /* Tambahan agar perubahan warna tombol lebih halus */
 }
 
+/* Efek saat diklik (HP) atau diarahkan mouse (PC) */
+#btnFullscreen:hover,
 #btnFullscreen:active {
-  background: rgba(200, 200, 200, 0.8);
-}
-
-/* HANYA MUNCUL SAAT HP DIMIRINGKAN (LANDSCAPE) */
-@media (orientation: landscape) {
-  #btnFullscreen {
-    display: flex;
-  }
+  background: rgba(200, 200, 200, 0.9);
 }
 
 
@@ -611,7 +605,6 @@ select, .menu-btn {
   #btnTogglePad {
     display: none !important;
   }
-  #btnFullscreen { display: none !important; }
 
   /* 3. Pindahkan lokasi tombol "SET" ke pojok kiri atas */
   .floating-bar {
