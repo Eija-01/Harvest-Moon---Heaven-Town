@@ -121,6 +121,14 @@ window.onload = () => {
     if (isGameStarted) return;
     isGameStarted = true;
 
+    // --- Memicu Mode Layar Penuh (Fullscreen) ---
+    const elem = document.documentElement; // Mengambil seluruh halaman HTML
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen().catch((err) => console.log(err)); // Standar modern
+    } else if (elem.webkitRequestFullscreen) { 
+      elem.webkitRequestFullscreen(); // Standar untuk Safari / iOS
+    }
+
     // 1. Bunyikan SFX Select
     startSfx.currentTime = 0;
     startSfx.play().catch(()=>{});
@@ -129,7 +137,7 @@ window.onload = () => {
     splash.style.backgroundColor = "#000"; 
     splashImg.style.opacity = "0";         
     
-    startText.style.animation = "none"; // <-- Kunci utamanya di sini
+    startText.style.animation = "none"; 
     startText.style.opacity = "0";         
 
     // 3. Tahan di layar hitam selama 2 Detik (2000ms), lalu masuk ke game
