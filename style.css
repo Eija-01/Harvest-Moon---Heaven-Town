@@ -334,42 +334,52 @@ body.landscape-mode .floating-bar button {
   align-items: center;
   width: 100%;
   padding: 0;
+  
+  /* Kunci Transisi: HANYA opacity. Jangan gunakan 'all' */
   opacity: 0;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition: opacity 0.4s ease; 
+  
   pointer-events: none;
   box-sizing: border-box;
+  /* Pastikan tidak ada properti top/bottom/position di sini agar tidak konflik */
+}
+
+/* Munculkan saat aktif */
+body.pad-active .shoulder-group { 
+  opacity: 1; 
+  pointer-events: auto; 
 }
 
 body.pad-active .shoulder-group { opacity: 1; pointer-events: auto; }
 
-body.landscape-mode.pad-active .shoulder-group {
+/* Posisi tombol L/R saat Landscape (Selalu terkunci di sini) */
+body.landscape-mode .shoulder-group {
   position: absolute;
-/* Kunci posisi di atas kontroler */
-  bottom: calc(var(--pad-size) + max(50px, env(safe-area-inset-bottom)));
-  top: auto; /* Membatalkan posisi top sebelumnya */
+  /* Angka ini harus sama persis dan tidak boleh berubah */
+  bottom: calc(var(--pad-size) + max(50px, env(safe-area-inset-bottom))); 
+  top: auto; 
   left: 0;
   width: 100%;
   padding-left: max(40px, env(safe-area-inset-left));
   padding-right: max(40px, env(safe-area-inset-right));
-  z-index: 1001; /* Pastikan di atas kontroler utama */
+  z-index: 1001;
+  
+  /* Hapus semua transition di sini agar tidak ada animasi pergerakan */
+  transition: none; 
 }
 
-.sh-btn {
-  width: 55px; 
-  height: 35px;
-  backdrop-filter: blur(1px);
-  background: rgba(255, 255, 255, 0.15); /* Sedikit lebih terang agar kelihatan */
-  border: 1px solid rgba(255,255,255,0.5);
-  color: #fff; /* Warna teks putih agar kontras */
-  border-radius: 6px;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  font-weight: bold; 
-  font-size: 14px; 
-  cursor: pointer; 
-  transition: all 0.1s;
-  gap: 5px; /* Jarak jika tombol L1 dan L2 berada dalam satu kontainer */
+/* Logika Muncul/Hilang saat Landscape */
+body.landscape-mode .shoulder-group {
+  /* Defaultnya hilang */
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.landscape-mode.pad-active .shoulder-group {
+  /* Muncul saat pad-active */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease; /* Hanya animasi pudar */
 }
 
 .sh-btn:active { background: rgba(255,255,255,0.1); transform: scale(0.95); }
