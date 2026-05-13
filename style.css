@@ -335,23 +335,30 @@ body.landscape-mode .floating-bar button {
   width: 100%;
   padding: 0;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
   pointer-events: none;
   box-sizing: border-box;
 }
 
-body.pad-active .shoulder-group { opacity: 1; pointer-events: auto; }
+/* Saat PAD aktif, munculkan kembali */
+body.pad-active .shoulder-group { 
+  opacity: 1; 
+  visibility: visible;
+  pointer-events: auto;
 
 body.landscape-mode.pad-active .shoulder-group {
   position: absolute;
-  /* PINDAH KE BAWAH: Di atas D-Pad dan Action Buttons */
+  /* Kunci posisi di atas kontroler */
   bottom: calc(var(--pad-size) + max(50px, env(safe-area-inset-bottom))); 
-  top: auto; /* Membatalkan posisi top sebelumnya */
+  top: auto; 
   left: 0;
   width: 100%;
   padding-left: max(40px, env(safe-area-inset-left));
   padding-right: max(40px, env(safe-area-inset-right));
-  z-index: 1001; /* Pastikan di atas kontroler utama */
+  z-index: 1001;
+  
+  /* Pastikan tidak ada transisi pada properti 'bottom' agar tidak bergeser saat hilang */
+  transition: opacity 0.4s ease, visibility 0.4s ease; 
 }
 
 .sh-btn {
