@@ -120,8 +120,13 @@ window.onload = () => {
   function startGame(e) {
     if (isGameStarted) return;
 
-    // CEGATAN BARU: Jika yang diklik adalah tombol Fullscreen atau gambar di dalamnya, BATALKAN!
-    if (e && (e.target.id === "btnFullscreen" || e.target.closest("#btnFullscreen"))) {
+// DAFTAR PENGECUALIAN: Jangan mulai game jika yang diklik adalah elemen-elemen ini
+    if (e && (
+      e.target.id === "btnFullscreen" || e.target.closest("#btnFullscreen") ||
+      e.target.id === "btnTogglePad" || e.target.closest("#btnTogglePad") ||
+      e.target.id === "btnSet" || e.target.closest("#btnSet") ||
+      e.target.classList.contains("floating-bar") || e.target.closest(".floating-bar")
+    )) {
       return; 
     }
 
