@@ -42,7 +42,8 @@ body {
   
   z-index: 999999 !important; /* <--- 1. UBAH INI: Tambahkan !important dan angkanya jadikan sangat besar */
   pointer-events: auto !important; /* <--- 2. TAMBAHKAN INI: Memaksa elemen ini merespon sentuhan/klik */
-  
+  touch-action: manipulation;
+
   transition: opacity 0.8s ease, background-color 0.5s ease;
   cursor: pointer;
   overflow: hidden;
@@ -61,17 +62,21 @@ body {
 }
 
 #startText {
-  position: absolute; /* Mengubah posisi menjadi absolut agar terlepas dari tengah layar */
-  bottom: 40px;       /* Menarik teks ke bawah dengan jarak 20px dari dasar container */
-  width: 100%;        /* Memastikan teks tetap berada persis di tengah secara horizontal */
+  position: absolute; 
+  top: 85%; /* Menggunakan persentase (85% dari atas layar) agar tidak pernah terdorong keluar batas bawah */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Memastikan posisi horizontal tepat di tengah */
+  
+  width: 100%;
   z-index: 2;
-  color: #000;        /* Memastikan warna teks hitam */
+  color: #000;
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 2px;
   text-align: center;
   animation: blink 1.5s infinite;
   transition: opacity 0.5s ease;
+  pointer-events: none; /* Memastikan teks tidak menghalangi area klik pada Splash Screen di belakangnya */
 }
 
 @keyframes blink {
