@@ -39,8 +39,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  /* Tambahkan animasi perubahan warna background di sini */
+  
+  z-index: 999999 !important; /* <--- 1. UBAH INI: Tambahkan !important dan angkanya jadikan sangat besar */
+  pointer-events: auto !important; /* <--- 2. TAMBAHKAN INI: Memaksa elemen ini merespon sentuhan/klik */
+  
   transition: opacity 0.8s ease, background-color 0.5s ease;
   cursor: pointer;
   overflow: hidden;
@@ -60,7 +62,7 @@ body {
 
 #startText {
   position: absolute; /* Mengubah posisi menjadi absolut agar terlepas dari tengah layar */
-  bottom: 20px;       /* Menarik teks ke bawah dengan jarak 20px dari dasar container */
+  bottom: 40px;       /* Menarik teks ke bawah dengan jarak 20px dari dasar container */
   width: 100%;        /* Memastikan teks tetap berada persis di tengah secara horizontal */
   z-index: 2;
   color: #000;        /* Memastikan warna teks hitam */
@@ -444,8 +446,8 @@ body.landscape-mode.pad-active .center-buttons {
   bottom: max(40px, env(safe-area-inset-bottom));
 }
 
-.sys-btn {  /* UI Tombol Select & Start */
-  width: 48px;
+.sys-btn {
+  /*UITombolSelect&Start*/width: 48px;
   height: 20px;
   backdrop-filter: blur(1px);
   background: rgba(255, 255, 255, 0.4);
